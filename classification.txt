@@ -1,0 +1,14 @@
+#All of the codes in this file needs to be run on mac terminal, the code does work of processing and appending group dataset and person’s dataset (which is done by python), and using Mahout to train the processed data, and then test the model trained. 
+
+#Trying different predictors and compare their performances
+
+mahout-trunk anitalu$ bin/mahout trainlogistic --input group_try.csv --output ./model --target group --categories 2 --predictors facing --types numeric --features 20 --passes 100 --rate 50
+
+mahout-trunk anitalu$ bin/mahout trainlogistic --input group_try.csv --output ./model --target group --categories 2 --predictors angle facing --types numeric --features 20 --passes 100 --rate 50
+
+mahout-trunk anitalu$ bin/mahout trainlogistic --input group_try.csv --output ./model --target group --categories 2 --predictors angle facing velocity —types numeric --features 20 --passes 100 --rate 50
+
+#Testing trained model
+  
+bin/mahout runlogistic --input group_try_2.csv --model ./model_2 --auc --confusion
+
